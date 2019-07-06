@@ -26,9 +26,9 @@
             <?php
                       
                 require("conexao.php");
-                $id = $_GET['id']['produto_id'] ;
-                echo "$id"   ;
-                $sql = 'SELECT * from produto, categoria where categoria_produto = categoria_id and produto_id = 1 '; 
+                $id = $_GET['id'] ;
+                var_dump ("iddddd" , $id ) ;
+                $sql = 'SELECT * from produto, categoria where categoria_produto = categoria_id and produto_id =' .$id; 
                 $query = $conexao->prepare( $sql);
                 $result = $query->execute();
                 $rows = $query->fetchAll(\PDO::FETCH_OBJ);
@@ -36,7 +36,7 @@
                 ?>
                     <div class="col-md-6 col-xs-12">
                         <br>
-                         <img class="img-responsive" src="<?php $row->imagen_produto; ?>" alt="350px" width="450px">
+                         <img class="img-responsive" src="<?php $row->imagen_produto; ?>" alt="450px" width="550px">
                      </div>
                       <hr>
                     <div class="col-md-6 col-xs-12">

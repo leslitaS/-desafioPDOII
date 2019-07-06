@@ -1,6 +1,7 @@
 
 <?php
    include_once ("conexao.php");
+ 
 ?>
 
 
@@ -37,20 +38,21 @@
                         </tr>
                         <?php
                         
-                         require("conexao.php");
+                        require("conexao.php");
                          
-                         $sql = 'SELECT * from produto, categoria where categoria_produto = categoria_id '; 
-                         $query = $conexao->prepare( $sql);
-                         $result = $query->execute();
-                         $rows = $query->fetchAll(\PDO::FETCH_OBJ);
-                         foreach ($rows as $row) {
+                        $sql = 'SELECT * from produto, categoria where categoria_produto = categoria_id '; 
+                        $query = $conexao->prepare( $sql);
+                        $result = $query->execute();
+                        $rows = $query->fetchAll(\PDO::FETCH_OBJ);
+                        foreach ($rows as $row) {
                             ?>
-                            <tr>
-                            <td><a href='mostrarProduto.php?id=" $row->produto_id "'> <?php print($row->nome_produto); ?> </a></td>
+
+                            <tr>  
+                            <td><a href='mostrarProduto.php?id= <?php print($row->produto_id); ?> '>  <?php print($row->nome_produto); ?> </a></td>
                             <td><?php print($row->nome_categoria); ?> </td>
                             <td>R$ <?php print($row->preco); ?> </td>
                             </tr>
-                             <?php
+                            <?php
                          } 
                         ?>
                         
